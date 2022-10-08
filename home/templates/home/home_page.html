@@ -1,0 +1,44 @@
+{% load static %}
+{% load wagtailcore_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lavender Lyrical</title>
+    <link rel = "icon" href = "{% static 'images/title_icon.png' %}" type = "image/x-icon">
+
+    <link rel="stylesheet" href="{% static 'css/welcome_page.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cormorant:ital,wght@1,300&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/5c2d098959.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navi">
+        <a href="#" class="ig" target=”_blank”><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/ipsita.banerjee.52" class="fb" target=”_blank”><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/adinapunyo-banerjee-378043221/" class="li" target=”_blank”><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://twitter.com/The_Adinapunyo" class="tw" target=”_blank”><i class="fa-brands fa-twitter"></i></a>
+    </div>
+
+    <div id="all">
+        <div id="hero">
+            <div id="The">  The  </div>
+            <div id="Main">
+                Lavender Lyrical
+            </div>
+            <div id="next">
+                Verses of a warrior braving to survive in a cruel world
+            </div>
+            {%for contents in page.get_children %}
+            <a href="{% pageurl contents %}" id="button">Read</a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
