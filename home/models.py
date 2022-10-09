@@ -1,8 +1,10 @@
+# from cProfile import label
+from turtle import heading
 from django.db import models
 
 from wagtail.models import Page
 from wagtail.fields import RichTextField
-from wagtail.admin.panels import FieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 
 class HomePage(Page):
@@ -26,10 +28,14 @@ class PoemPage(Page):
     tc = models.CharField(max_length=15, default = 'white')
 
     content_panels = Page.content_panels + [
-        FieldPanel('tc'),
-        FieldPanel('intro'),
+        MultiFieldPanel(
+            [
+                FieldPanel('tc', heading="Title Colour"),
+                FieldPanel('intro', heading="Introductory Note")
+            ], heading="Basic Info"
+        ),
         FieldPanel('body'),
-        FieldPanel('bg')
+        FieldPanel('bg', heading="Background Image")
     ]
 
     parent_page_types = ['home.ContentPage']
